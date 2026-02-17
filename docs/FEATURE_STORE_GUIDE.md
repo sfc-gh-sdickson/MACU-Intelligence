@@ -11,7 +11,7 @@ The MACU Intelligence Feature Store provides centralized feature management for 
 
 ## Architecture
 
-<img src="images/feature-store-diagram.svg" alt="Feature Store Architecture" width="100%">
+<img src="./images/feature-store-diagram.svg" alt="Feature Store Architecture" width="100%">
 
 ## Core Components
 

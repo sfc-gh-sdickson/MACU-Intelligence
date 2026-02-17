@@ -22,7 +22,7 @@ Before deploying the Intelligence Agent, ensure you have:
 
 ## Agent Architecture
 
-<img src="images/agent-tools-diagram.svg" alt="Agent Tool Architecture" width="100%">
+<img src="./images/agent-tools-diagram.svg" alt="Agent Tool Architecture" width="100%">
 
 ## Agent Tools
 

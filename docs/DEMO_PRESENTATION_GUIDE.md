@@ -12,7 +12,7 @@ This guide provides a structured approach for demonstrating the MACU Intelligenc
 
 ## Demo Agenda
 
-<img src="images/demo-flow-diagram.svg" alt="Demo Flow" width="100%">
+<img src="./images/demo-flow-diagram.svg" alt="Demo Flow" width="100%">
 
 1. **Introduction** (5 min) - Solution overview and business value
 2. **Data Foundation** (5 min) - Data model and synthetic data
@@ -33,7 +33,7 @@ This guide provides a structured approach for demonstrating the MACU Intelligenc
 
 ### Architecture Slide
 
-<img src="images/architecture-diagram.svg" alt="MACU Intelligence Architecture" width="100%">
+<img src="./images/architecture-diagram.svg" alt="MACU Intelligence Architecture" width="100%">
 
 ---
 
