@@ -1,38 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
   <defs>
     <linearGradient id="agentBoxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#29B5E8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0D9DD9;stop-opacity:1" />
+      <stop offset="0%" stop-color="#29B5E8"/>
+      <stop offset="100%" stop-color="#0D9DD9"/>
     </linearGradient>
     <linearGradient id="toolGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6D28D9;stop-opacity:1" />
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
     </linearGradient>
     <linearGradient id="toolGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
     </linearGradient>
     <linearGradient id="toolGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
-    <filter id="shadowAgent" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="2" dy="4" stdDeviation="5" flood-opacity="0.2"/>
-    </filter>
   </defs>
   
-  <!-- Background -->
   <rect width="900" height="400" fill="#F8FAFC"/>
   
-  <!-- Title -->
   <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1E293B">Agent Tool Architecture</text>
   
-  <!-- Main Agent Box -->
-  <rect x="300" y="55" width="300" height="70" rx="10" fill="url(#agentBoxGrad)" filter="url(#shadowAgent)"/>
+  <rect x="300" y="55" width="300" height="70" rx="10" fill="url(#agentBoxGrad)"/>
   <text x="450" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">MACU Intelligence Agent</text>
-  <text x="450" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" opacity="0.9">claude-3-5-sonnet • 13 Tools</text>
+  <text x="450" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" fill-opacity="0.9">claude-3-5-sonnet - 13 Tools</text>
   
-  <!-- Connection lines from agent -->
   <path d="M 350 125 L 350 160 L 150 160 L 150 190" stroke="#94A3B8" stroke-width="2" fill="none"/>
   <path d="M 450 125 L 450 190" stroke="#94A3B8" stroke-width="2" fill="none"/>
   <path d="M 550 125 L 550 160 L 750 160 L 750 190" stroke="#94A3B8" stroke-width="2" fill="none"/>
@@ -41,57 +35,54 @@
   <polygon points="450,190 445,180 455,180" fill="#94A3B8"/>
   <polygon points="750,190 745,180 755,180" fill="#94A3B8"/>
   
-  <!-- Cortex Search Column -->
-  <rect x="50" y="190" width="200" height="190" rx="8" fill="url(#toolGrad1)" filter="url(#shadowAgent)"/>
+  <rect x="50" y="190" width="200" height="190" rx="8" fill="url(#toolGrad1)"/>
   <text x="150" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Cortex Search</text>
-  <text x="150" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">Unstructured Data</text>
+  <text x="150" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" fill-opacity="0.8">Unstructured Data</text>
   
   <rect x="65" y="255" width="170" height="35" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="75" y="272" font-family="Arial, sans-serif" font-size="9" fill="white">🔍 search_support_transcripts</text>
-  <text x="75" y="284" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.7">Member interaction history</text>
+  <text x="75" y="272" font-family="Arial, sans-serif" font-size="9" fill="white">search_support_transcripts</text>
+  <text x="75" y="284" font-family="Arial, sans-serif" font-size="8" fill="white" fill-opacity="0.7">Member interaction history</text>
   
   <rect x="65" y="295" width="170" height="35" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="75" y="312" font-family="Arial, sans-serif" font-size="9" fill="white">📋 search_compliance_docs</text>
-  <text x="75" y="324" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.7">Policies & regulations</text>
+  <text x="75" y="312" font-family="Arial, sans-serif" font-size="9" fill="white">search_compliance_docs</text>
+  <text x="75" y="324" font-family="Arial, sans-serif" font-size="8" fill="white" fill-opacity="0.7">Policies and regulations</text>
   
   <rect x="65" y="335" width="170" height="35" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="75" y="352" font-family="Arial, sans-serif" font-size="9" fill="white">📦 search_product_knowledge</text>
-  <text x="75" y="364" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.7">Product info & FAQs</text>
+  <text x="75" y="352" font-family="Arial, sans-serif" font-size="9" fill="white">search_product_knowledge</text>
+  <text x="75" y="364" font-family="Arial, sans-serif" font-size="8" fill="white" fill-opacity="0.7">Product info and FAQs</text>
   
-  <!-- Cortex Analyst Column -->
-  <rect x="350" y="190" width="200" height="190" rx="8" fill="url(#toolGrad2)" filter="url(#shadowAgent)"/>
+  <rect x="350" y="190" width="200" height="190" rx="8" fill="url(#toolGrad2)"/>
   <text x="450" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Cortex Analyst</text>
-  <text x="450" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">Semantic Text-to-SQL</text>
+  <text x="450" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" fill-opacity="0.8">Semantic Text-to-SQL</text>
   
   <rect x="365" y="255" width="170" height="28" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="375" y="273" font-family="Arial, sans-serif" font-size="9" fill="white">👤 query_member_data</text>
+  <text x="375" y="273" font-family="Arial, sans-serif" font-size="9" fill="white">query_member_data</text>
   
   <rect x="365" y="287" width="170" height="28" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="375" y="305" font-family="Arial, sans-serif" font-size="9" fill="white">💳 query_account_data</text>
+  <text x="375" y="305" font-family="Arial, sans-serif" font-size="9" fill="white">query_account_data</text>
   
   <rect x="365" y="319" width="170" height="28" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="375" y="337" font-family="Arial, sans-serif" font-size="9" fill="white">🏦 query_loan_data</text>
+  <text x="375" y="337" font-family="Arial, sans-serif" font-size="9" fill="white">query_loan_data</text>
   
   <rect x="365" y="351" width="80" height="20" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="375" y="365" font-family="Arial, sans-serif" font-size="8" fill="white">📊 transactions</text>
+  <text x="375" y="365" font-family="Arial, sans-serif" font-size="8" fill="white">transactions</text>
   
   <rect x="450" y="351" width="80" height="20" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="460" y="365" font-family="Arial, sans-serif" font-size="8" fill="white">🎧 support</text>
+  <text x="460" y="365" font-family="Arial, sans-serif" font-size="8" fill="white">support</text>
   
-  <!-- ML Functions Column -->
-  <rect x="650" y="190" width="200" height="190" rx="8" fill="url(#toolGrad3)" filter="url(#shadowAgent)"/>
+  <rect x="650" y="190" width="200" height="190" rx="8" fill="url(#toolGrad3)"/>
   <text x="750" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">ML Functions</text>
-  <text x="750" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">Real-time Inference</text>
+  <text x="750" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" fill-opacity="0.8">Real-time Inference</text>
   
   <rect x="665" y="255" width="170" height="35" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="675" y="272" font-family="Arial, sans-serif" font-size="9" fill="white">⚠️ predict_loan_risk</text>
-  <text x="675" y="284" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.7">Default probability scoring</text>
+  <text x="675" y="272" font-family="Arial, sans-serif" font-size="9" fill="white">predict_loan_risk</text>
+  <text x="675" y="284" font-family="Arial, sans-serif" font-size="8" fill="white" fill-opacity="0.7">Default probability scoring</text>
   
   <rect x="665" y="295" width="170" height="35" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="675" y="312" font-family="Arial, sans-serif" font-size="9" fill="white">🚨 predict_fraud</text>
-  <text x="675" y="324" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.7">Transaction fraud score</text>
+  <text x="675" y="312" font-family="Arial, sans-serif" font-size="9" fill="white">predict_fraud</text>
+  <text x="675" y="324" font-family="Arial, sans-serif" font-size="8" fill="white" fill-opacity="0.7">Transaction fraud score</text>
   
   <rect x="665" y="335" width="170" height="35" rx="4" fill="white" fill-opacity="0.15"/>
-  <text x="675" y="352" font-family="Arial, sans-serif" font-size="9" fill="white">🏃 predict_churn</text>
-  <text x="675" y="364" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.7">Member retention risk</text>
+  <text x="675" y="352" font-family="Arial, sans-serif" font-size="9" fill="white">predict_churn</text>
+  <text x="675" y="364" font-family="Arial, sans-serif" font-size="8" fill="white" fill-opacity="0.7">Member retention risk</text>
 </svg>

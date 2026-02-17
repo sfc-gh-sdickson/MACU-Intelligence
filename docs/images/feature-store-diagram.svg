@@ -1,39 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
   <defs>
     <linearGradient id="fsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#EC4899;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#DB2777;stop-opacity:1" />
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#DB2777"/>
     </linearGradient>
     <linearGradient id="entityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
     </linearGradient>
     <linearGradient id="fvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
     </linearGradient>
     <linearGradient id="regGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
     </linearGradient>
-    <filter id="shadow2" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.15"/>
-    </filter>
   </defs>
   
-  <!-- Background -->
   <rect width="900" height="500" fill="#F8FAFC"/>
   
-  <!-- Title -->
   <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1E293B">Feature Store Architecture</text>
   <text x="450" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#64748B">MACU_INTELLIGENCE.FEATURE_STORE</text>
   
-  <!-- Main Feature Store Container -->
-  <rect x="50" y="75" width="800" height="80" rx="12" fill="url(#fsGrad)" filter="url(#shadow2)"/>
+  <rect x="50" y="75" width="800" height="80" rx="12" fill="url(#fsGrad)"/>
   <text x="450" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Snowflake Feature Store</text>
-  <text x="450" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" opacity="0.9">Centralized Feature Management • Point-in-Time Retrieval • Online Serving</text>
+  <text x="450" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" fill-opacity="0.9">Centralized Feature Management - Point-in-Time Retrieval - Online Serving</text>
   
-  <!-- Connection Lines -->
   <path d="M 200 155 L 200 195" stroke="#CBD5E1" stroke-width="2.5" fill="none"/>
   <path d="M 450 155 L 450 195" stroke="#CBD5E1" stroke-width="2.5" fill="none"/>
   <path d="M 700 155 L 700 195" stroke="#CBD5E1" stroke-width="2.5" fill="none"/>
@@ -42,106 +36,86 @@
   <polygon points="450,195 445,183 455,183" fill="#CBD5E1"/>
   <polygon points="700,195 695,183 705,183" fill="#CBD5E1"/>
   
-  <!-- Entities Box -->
-  <rect x="75" y="195" width="250" height="180" rx="10" fill="url(#entityGrad)" filter="url(#shadow2)"/>
+  <rect x="75" y="195" width="250" height="180" rx="10" fill="url(#entityGrad)"/>
   <rect x="75" y="195" width="250" height="40" rx="10" fill="white" fill-opacity="0.15"/>
   <text x="200" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Entities</text>
   
-  <!-- Entity Items -->
   <rect x="95" y="250" width="100" height="50" rx="6" fill="white" fill-opacity="0.2"/>
   <text x="145" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">MEMBER</text>
-  <text x="145" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.85">member_id</text>
+  <text x="145" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.85">member_id</text>
   
   <rect x="205" y="250" width="100" height="50" rx="6" fill="white" fill-opacity="0.2"/>
   <text x="255" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">ACCOUNT</text>
-  <text x="255" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.85">account_id</text>
+  <text x="255" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.85">account_id</text>
   
   <rect x="95" y="310" width="100" height="50" rx="6" fill="white" fill-opacity="0.2"/>
   <text x="145" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">LOAN</text>
-  <text x="145" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.85">loan_id</text>
+  <text x="145" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.85">loan_id</text>
   
   <rect x="205" y="310" width="100" height="50" rx="6" fill="white" fill-opacity="0.2"/>
   <text x="255" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">TRANSACTION</text>
-  <text x="255" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.85">transaction_id</text>
+  <text x="255" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.85">transaction_id</text>
   
-  <!-- Feature Views Box -->
-  <rect x="325" y="195" width="250" height="180" rx="10" fill="url(#fvGrad)" filter="url(#shadow2)"/>
+  <rect x="325" y="195" width="250" height="180" rx="10" fill="url(#fvGrad)"/>
   <rect x="325" y="195" width="250" height="40" rx="10" fill="white" fill-opacity="0.15"/>
   <text x="450" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Feature Views</text>
   
-  <!-- Feature View Items -->
   <rect x="340" y="250" width="220" height="28" rx="5" fill="white" fill-opacity="0.2"/>
   <text x="355" y="269" font-family="Arial, sans-serif" font-size="10" fill="white">MEMBER_PROFILE_FEATURES</text>
-  <text x="540" y="269" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.8">Daily</text>
+  <text x="540" y="269" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.8">Daily</text>
   
   <rect x="340" y="283" width="220" height="28" rx="5" fill="white" fill-opacity="0.2"/>
   <text x="355" y="302" font-family="Arial, sans-serif" font-size="10" fill="white">TRANSACTION_PATTERN_FEATURES</text>
-  <text x="540" y="302" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.8">Hourly</text>
+  <text x="540" y="302" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.8">Hourly</text>
   
   <rect x="340" y="316" width="220" height="28" rx="5" fill="white" fill-opacity="0.2"/>
   <text x="355" y="335" font-family="Arial, sans-serif" font-size="10" fill="white">LOAN_RISK_FEATURES</text>
-  <text x="540" y="335" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.8">Daily</text>
+  <text x="540" y="335" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.8">Daily</text>
   
   <rect x="340" y="349" width="220" height="28" rx="5" fill="white" fill-opacity="0.25"/>
   <text x="355" y="368" font-family="Arial, sans-serif" font-size="10" fill="white">FRAUD_DETECTION_FEATURES</text>
   <text x="540" y="368" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#FEF08A">Real-time</text>
   
-  <!-- Registry Box -->
-  <rect x="575" y="195" width="250" height="180" rx="10" fill="url(#regGrad)" filter="url(#shadow2)"/>
+  <rect x="575" y="195" width="250" height="180" rx="10" fill="url(#regGrad)"/>
   <rect x="575" y="195" width="250" height="40" rx="10" fill="white" fill-opacity="0.15"/>
-  <text x="700" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Registry & Monitoring</text>
+  <text x="700" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Registry and Monitoring</text>
   
-  <!-- Registry Items -->
-  <g transform="translate(595, 250)">
-    <rect width="210" height="35" rx="5" fill="white" fill-opacity="0.2"/>
-    <text x="12" y="15" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">📋 FEATURE_REGISTRY</text>
-    <text x="12" y="28" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.8">Metadata & Definitions</text>
-  </g>
+  <rect x="595" y="250" width="210" height="35" rx="5" fill="white" fill-opacity="0.2"/>
+  <text x="607" y="265" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">FEATURE_REGISTRY</text>
+  <text x="607" y="278" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.8">Metadata and Definitions</text>
   
-  <g transform="translate(595, 292)">
-    <rect width="210" height="35" rx="5" fill="white" fill-opacity="0.2"/>
-    <text x="12" y="15" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">📊 FEATURE_GROUPS</text>
-    <text x="12" y="28" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.8">Logical Groupings</text>
-  </g>
+  <rect x="595" y="292" width="210" height="35" rx="5" fill="white" fill-opacity="0.2"/>
+  <text x="607" y="307" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">FEATURE_GROUPS</text>
+  <text x="607" y="320" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.8">Logical Groupings</text>
   
-  <g transform="translate(595, 334)">
-    <rect width="210" height="35" rx="5" fill="white" fill-opacity="0.2"/>
-    <text x="12" y="15" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">💚 FEATURE_STORE_HEALTH</text>
-    <text x="12" y="28" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.8">Freshness & Quality Metrics</text>
-  </g>
+  <rect x="595" y="334" width="210" height="35" rx="5" fill="white" fill-opacity="0.2"/>
+  <text x="607" y="349" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">FEATURE_STORE_HEALTH</text>
+  <text x="607" y="362" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.8">Freshness and Quality Metrics</text>
   
-  <!-- Bottom Section - Data Flow -->
-  <rect x="50" y="400" width="800" height="80" rx="10" fill="#E2E8F0" filter="url(#shadow2)"/>
+  <rect x="50" y="400" width="800" height="80" rx="10" fill="#E2E8F0"/>
   
-  <!-- Data Sources -->
   <rect x="70" y="415" width="150" height="50" rx="8" fill="#3B82F6"/>
   <text x="145" y="437" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Source Tables</text>
-  <text x="145" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.9">RAW Schema Data</text>
+  <text x="145" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.9">RAW Schema Data</text>
   
-  <!-- Arrow -->
-  <path d="M 230 440 L 290 440" stroke="#64748B" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 230 440 L 290 440" stroke="#64748B" stroke-width="2" fill="none"/>
   <polygon points="290,440 280,435 280,445" fill="#64748B"/>
   
-  <!-- Feature Computation -->
   <rect x="300" y="415" width="150" height="50" rx="8" fill="#10B981"/>
   <text x="375" y="437" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Feature Compute</text>
-  <text x="375" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.9">Dynamic Tables</text>
+  <text x="375" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.9">Dynamic Tables</text>
   
-  <!-- Arrow -->
   <path d="M 460 440 L 520 440" stroke="#64748B" stroke-width="2" fill="none"/>
   <polygon points="520,440 510,435 510,445" fill="#64748B"/>
   
-  <!-- Online Store -->
   <rect x="530" y="415" width="150" height="50" rx="8" fill="#8B5CF6"/>
   <text x="605" y="437" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Online Store</text>
-  <text x="605" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.9">Real-time Serving</text>
+  <text x="605" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.9">Real-time Serving</text>
   
-  <!-- Arrow -->
   <path d="M 690 440 L 750 440" stroke="#64748B" stroke-width="2" fill="none"/>
   <polygon points="750,440 740,435 740,445" fill="#64748B"/>
   
-  <!-- ML Models -->
   <rect x="760" y="415" width="70" height="50" rx="8" fill="#F59E0B"/>
   <text x="795" y="437" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">ML</text>
-  <text x="795" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" opacity="0.9">Inference</text>
+  <text x="795" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" fill-opacity="0.9">Inference</text>
 </svg>
