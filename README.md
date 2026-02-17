@@ -48,40 +48,7 @@ This Snowflake Intelligence solution showcases:
 
 ## Directory Structure
 
-```
-├── README.md                           # This file
-├── docs/
-│   ├── AGENT_SETUP.md                  # Agent configuration guide
-│   ├── DEMO_PRESENTATION_GUIDE.md      # Demo walkthrough
-│   ├── FEATURE_STORE_GUIDE.md          # Feature Store documentation
-│   └── questions.md                    # Sample agent questions
-├── notebooks/
-│   └── macu_ml_models.ipynb            # ML training notebook
-└── sql/
-    ├── setup/
-    │   ├── 01_database_and_schema.sql  # Database initialization
-    │   └── 02_create_tables.sql        # Core table definitions
-    ├── data/
-    │   └── 04_generate_synthetic_data.sql  # Synthetic data generation
-    ├── feature_store/
-    │   ├── 03_create_feature_store.sql     # Feature Store infrastructure
-    │   ├── 05_create_features.sql          # Feature definitions
-    │   ├── 05a_populate_monitoring_data.sql # Monitoring data
-    │   └── 05b_create_aggregation_views.sql # Aggregation views
-    ├── views/
-    │   ├── 06_create_views.sql             # Analytical views
-    │   └── 07_create_semantic_views.sql    # Semantic views for Analyst
-    ├── search/
-    │   └── 08_create_cortex_search.sql     # Cortex Search services
-    ├── ml/
-    │   └── 09_create_model_functions.sql   # ML inference functions
-    ├── agent/
-    │   └── 10_create_intelligence_agent.sql # Agent creation
-    ├── monitoring/
-    │   └── 11_create_monitoring_dashboard.sql # Dashboard views
-    └── validation/
-        └── 12_validate_deployment.sql      # Deployment validation
-```
+<img src="docs/images/directory-structure.svg" alt="Project Directory Structure" width="100%">
 
 ## Database Schema
 
