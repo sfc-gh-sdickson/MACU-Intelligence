@@ -22,21 +22,7 @@ Before deploying the Intelligence Agent, ensure you have:
 
 ## Agent Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                 MACU Intelligence Agent                      │
-│              (claude-3-5-sonnet model)                       │
-└─────────────────────────────────────────────────────────────┘
-                            │
-        ┌───────────────────┼───────────────────┐
-        │                   │                   │
-        ▼                   ▼                   ▼
-┌───────────────┐   ┌───────────────┐   ┌───────────────┐
-│ Cortex Search │   │Cortex Analyst │   │ SQL Functions │
-│    (3 svcs)   │   │ (5 semantic   │   │  (5 ML model  │
-│               │   │    views)     │   │   functions)  │
-└───────────────┘   └───────────────┘   └───────────────┘
-```
+<img src="images/agent-tools-diagram.svg" alt="Agent Tool Architecture" width="100%">
 
 ## Agent Tools
 

@@ -30,33 +30,7 @@ This Snowflake Intelligence solution showcases:
 
 ### Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    MACU Intelligence Agent                         │
-│    (Natural Language Interface for Credit Union Operations)        │
-└─────────────────────────────────────────────────────────────────────┘
-                                  │
-        ┌─────────────────────────┼─────────────────────────┐
-        │                         │                         │
-        ▼                         ▼                         ▼
-┌───────────────┐       ┌───────────────┐       ┌───────────────┐
-│ Cortex Search │       │Cortex Analyst │       │  ML Models    │
-│   Services    │       │(Semantic Views)│      │  (Registry)   │
-└───────────────┘       └───────────────┘       └───────────────┘
-        │                         │                         │
-        ▼                         ▼                         ▼
-┌───────────────┐       ┌───────────────┐       ┌───────────────┐
-│  Transcripts  │       │   Members     │       │ Loan Default  │
-│  Compliance   │       │   Accounts    │       │ Fraud Score   │
-│  Products     │       │   Loans       │       │ Churn Risk    │
-└───────────────┘       │  Transactions │       └───────────────┘
-                        └───────────────┘
-                                │
-                        ┌───────────────┐
-                        │ Feature Store │
-                        │  (Online)     │
-                        └───────────────┘
-```
+<img src="docs/images/architecture-diagram.svg" alt="MACU Intelligence Agent Architecture" width="100%">
 
 ### Feature Store Capabilities
 - **Feature Engineering**: SQL-based feature definitions with versioning

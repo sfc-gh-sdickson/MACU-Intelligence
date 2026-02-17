@@ -12,6 +12,8 @@ This guide provides a structured approach for demonstrating the MACU Intelligenc
 
 ## Demo Agenda
 
+<img src="images/demo-flow-diagram.svg" alt="Demo Flow" width="100%">
+
 1. **Introduction** (5 min) - Solution overview and business value
 2. **Data Foundation** (5 min) - Data model and synthetic data
 3. **Feature Store** (10 min) - Feature management and ML features
@@ -31,24 +33,7 @@ This guide provides a structured approach for demonstrating the MACU Intelligenc
 
 ### Architecture Slide
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    MACU Intelligence Agent                       │
-│         "How can I help you serve our members today?"           │
-└─────────────────────────────────────────────────────────────────┘
-                                │
-        ┌───────────────────────┼───────────────────────┐
-        │                       │                       │
-   ┌────▼────┐            ┌────▼────┐            ┌────▼────┐
-   │ Cortex  │            │ Cortex  │            │   ML    │
-   │ Search  │            │ Analyst │            │ Models  │
-   └─────────┘            └─────────┘            └─────────┘
-        │                       │                       │
-   Unstructured            Structured               Predictions
-   - Transcripts           - Members                - Risk Scores
-   - Compliance            - Accounts               - Fraud Detection
-   - Products              - Loans                  - Churn Prediction
-```
+<img src="images/architecture-diagram.svg" alt="MACU Intelligence Architecture" width="100%">
 
 ---
 

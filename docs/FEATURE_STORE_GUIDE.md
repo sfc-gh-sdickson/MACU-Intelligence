@@ -11,21 +11,7 @@ The MACU Intelligence Feature Store provides centralized feature management for 
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     Feature Store                                │
-│                  (MACU_INTELLIGENCE.FEATURE_STORE)               │
-└─────────────────────────────────────────────────────────────────┘
-        │                    │                    │
-        ▼                    ▼                    ▼
-┌───────────────┐    ┌───────────────┐    ┌───────────────┐
-│   Entities    │    │FeatureViews   │    │   Registry    │
-│  - Member     │    │  (Dynamic     │    │  - Metadata   │
-│  - Account    │    │   Tables)     │    │  - Lineage    │
-│  - Loan       │    │               │    │  - Health     │
-│  - Transaction│    │               │    │               │
-└───────────────┘    └───────────────┘    └───────────────┘
-```
+<img src="images/feature-store-diagram.svg" alt="Feature Store Architecture" width="100%">
 
 ## Core Components
 

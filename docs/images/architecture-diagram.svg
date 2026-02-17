@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="agentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#29B5E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D9DD9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="searchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="analystGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4F46E5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="featureGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DB2777;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="600" fill="#F8FAFC"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1E293B">MACU Intelligence Agent Architecture</text>
+  
+  <!-- Main Agent Box -->
+  <rect x="200" y="60" width="500" height="80" rx="12" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <text x="450" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">MACU Intelligence Agent</text>
+  <text x="450" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white" opacity="0.9">Natural Language Interface • claude-3-5-sonnet</text>
+  
+  <!-- Connection Lines from Agent -->
+  <path d="M 300 140 L 300 180 L 150 180 L 150 220" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  <path d="M 450 140 L 450 220" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  <path d="M 600 140 L 600 180 L 750 180 L 750 220" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  
+  <!-- Arrow heads -->
+  <polygon points="150,220 145,210 155,210" fill="#94A3B8"/>
+  <polygon points="450,220 445,210 455,210" fill="#94A3B8"/>
+  <polygon points="750,220 745,210 755,210" fill="#94A3B8"/>
+  
+  <!-- Cortex Search Box -->
+  <rect x="50" y="220" width="200" height="120" rx="10" fill="url(#searchGrad)" filter="url(#shadow)"/>
+  <text x="150" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white">Cortex Search</text>
+  <text x="150" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" opacity="0.9">3 Search Services</text>
+  <line x1="70" y1="295" x2="230" y2="295" stroke="white" stroke-opacity="0.3"/>
+  <text x="150" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">• Transcripts</text>
+  <text x="150" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">• Compliance • Products</text>
+  
+  <!-- Cortex Analyst Box -->
+  <rect x="350" y="220" width="200" height="120" rx="10" fill="url(#analystGrad)" filter="url(#shadow)"/>
+  <text x="450" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white">Cortex Analyst</text>
+  <text x="450" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" opacity="0.9">5 Semantic Views</text>
+  <line x1="370" y1="295" x2="530" y2="295" stroke="white" stroke-opacity="0.3"/>
+  <text x="450" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">• Members • Accounts</text>
+  <text x="450" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">• Loans • Transactions</text>
+  
+  <!-- ML Models Box -->
+  <rect x="650" y="220" width="200" height="120" rx="10" fill="url(#mlGrad)" filter="url(#shadow)"/>
+  <text x="750" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white">ML Models</text>
+  <text x="750" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" opacity="0.9">4 SQL Functions</text>
+  <line x1="670" y1="295" x2="830" y2="295" stroke="white" stroke-opacity="0.3"/>
+  <text x="750" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">• Loan Risk • Fraud</text>
+  <text x="750" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">• Churn • Approval</text>
+  
+  <!-- Connection Lines to Data -->
+  <path d="M 150 340 L 150 380" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  <path d="M 450 340 L 450 380" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  <path d="M 750 340 L 750 380" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  
+  <polygon points="150,380 145,370 155,370" fill="#94A3B8"/>
+  <polygon points="450,380 445,370 455,370" fill="#94A3B8"/>
+  <polygon points="750,380 745,370 755,370" fill="#94A3B8"/>
+  
+  <!-- Unstructured Data Box -->
+  <rect x="50" y="380" width="200" height="100" rx="10" fill="url(#dataGrad)" filter="url(#shadow)"/>
+  <text x="150" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Unstructured Data</text>
+  <text x="150" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Support Transcripts</text>
+  <text x="150" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Compliance Documents</text>
+  <text x="150" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Product Knowledge Base</text>
+  
+  <!-- Structured Data Box -->
+  <rect x="350" y="380" width="200" height="100" rx="10" fill="url(#dataGrad)" filter="url(#shadow)"/>
+  <text x="450" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Structured Data</text>
+  <text x="450" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Members • Accounts</text>
+  <text x="450" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Loans • Transactions</text>
+  <text x="450" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Support Interactions</text>
+  
+  <!-- Model Registry Box -->
+  <rect x="650" y="380" width="200" height="100" rx="10" fill="url(#dataGrad)" filter="url(#shadow)"/>
+  <text x="750" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Model Registry</text>
+  <text x="750" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Loan Default Model</text>
+  <text x="750" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Fraud Detection Model</text>
+  <text x="750" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.85">Churn Prediction Model</text>
+  
+  <!-- Feature Store Connection -->
+  <path d="M 450 480 L 450 510" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  <polygon points="450,510 445,500 455,500" fill="#94A3B8"/>
+  
+  <!-- Feature Store Box -->
+  <rect x="300" y="510" width="300" height="70" rx="10" fill="url(#featureGrad)" filter="url(#shadow)"/>
+  <text x="450" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white">Feature Store</text>
+  <text x="450" y="565" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" opacity="0.9">Online Feature Serving • 15+ ML Features • Real-time Updates</text>
+  
+  <!-- Icons/Decorations -->
+  <circle cx="80" cy="250" r="15" fill="white" fill-opacity="0.2"/>
+  <text x="80" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">🔍</text>
+  
+  <circle cx="380" cy="250" r="15" fill="white" fill-opacity="0.2"/>
+  <text x="380" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">📊</text>
+  
+  <circle cx="680" cy="250" r="15" fill="white" fill-opacity="0.2"/>
+  <text x="680" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">🤖</text>
+</svg>
