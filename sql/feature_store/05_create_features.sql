@@ -1,0 +1,5 @@
+-- ============================================================================
+-- NOTE: Dynamic Tables are now created and managed by the Feature Store API
+-- in the macu_ml_models.ipynb notebook.
+-- The queries that defined them have been moved into the FeatureView definitions.
+-- ============================================================================

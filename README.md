@@ -1,49 +1,62 @@
 <img src="Snowflake_Logo.svg" width="200">
 
-# Varo Intelligence Agent & Feature Store Solution
+# Mountain America Credit Union Intelligence Agent & Feature Store Demo
 
-## About Varo Bank
+## About Mountain America Credit Union
 
-Varo Bank is a leading all-digital, nationally chartered bank committed to financial inclusion and opportunity. As a technology-first bank, Varo offers modern banking services including checking accounts, savings accounts, cash advances, and credit-building tools - all through their mobile app with no hidden fees.
+Mountain America Credit Union is one of the largest credit unions in the United States, serving over 1 million members across Utah, Idaho, Arizona, Nevada, and New Mexico. As a member-owned financial cooperative, MACU provides a full range of financial services with a focus on member value and community impact.
 
 ### Key Services
 
-- **Bank Accounts**: No-fee checking with early direct deposit
-- **Savings Accounts**: High-yield savings with auto-save tools
-- **Varo Advance**: Cash advances up to $500
-- **Credit Building**: Varo Believe Credit Card for building credit history
-- **Line of Credit**: Personal lines of credit up to $2,000
-- **Cashback Rewards**: Automatic cashback at 10,000+ merchants
+- **Share Savings**: Primary membership accounts with competitive dividends
+- **Checking**: Rewards and basic checking with no hidden fees
+- **Share Certificates**: Term deposits with guaranteed returns
+- **Auto Loans**: Competitive rates for new and used vehicles
+- **Home Loans**: Mortgages, refinancing, and home equity products
+- **Personal Loans**: Signature and secured personal lending
+- **Credit Cards**: Visa Rewards cards with cash back
+- **Digital Banking**: Full-featured mobile and online banking
 
 ### Technology Innovation
 
-- **All-Digital Platform**: Mobile-first banking experience
-- **Real-Time Processing**: Instant transfers and payments
-- **ML-Powered Features**: Risk assessment, fraud detection, personalization
-- **API-First Architecture**: Seamless integrations with fintech ecosystem
-
-## Migration from Tecton to Snowflake Feature Store
-
-This solution demonstrates how Varo can migrate from Tecton (now part of Databricks) to Snowflake's native Feature Store, addressing key requirements identified during consultation:
-
-### Key Migration Benefits
-
-✅ **SQL-First Approach**: Native SQL for all feature engineering (no Python/Scala required)  
-✅ **Streaming Support**: Real-time feature computation with Snowflake Streams  
-✅ **Backfill Capabilities**: Time-travel and historical feature generation  
-✅ **Auto-Scaling**: Serverless compute scales automatically  
-✅ **Cost Optimization**: Pay only for compute used, no always-on infrastructure  
-✅ **Unified Platform**: Features, ML, and analytics in one platform
+- **Member-First Digital Experience**: Modern mobile and online banking
+- **AI-Powered Assistance**: Intelligence Agent for staff support
+- **ML-Driven Decisions**: Risk assessment, fraud detection, personalization
+- **Feature Store**: Centralized ML feature management
 
 ## Project Overview
 
 This Snowflake Intelligence solution showcases:
 
-### Architecture Diagram
+### Architecture
 
-<img src="architecture_diagram.svg" width="100%">
-
-*Figure: Varo Intelligence Agent & Feature Store Architecture - showing the integration of Cortex Analyst, Feature Store, ML Models, and Cortex Search*
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    MACU Intelligence Agent                         │
+│    (Natural Language Interface for Credit Union Operations)        │
+└─────────────────────────────────────────────────────────────────────┘
+                                  │
+        ┌─────────────────────────┼─────────────────────────┐
+        │                         │                         │
+        ▼                         ▼                         ▼
+┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+│ Cortex Search │       │Cortex Analyst │       │  ML Models    │
+│   Services    │       │(Semantic Views)│      │  (Registry)   │
+└───────────────┘       └───────────────┘       └───────────────┘
+        │                         │                         │
+        ▼                         ▼                         ▼
+┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+│  Transcripts  │       │   Members     │       │ Loan Default  │
+│  Compliance   │       │   Accounts    │       │ Fraud Score   │
+│  Products     │       │   Loans       │       │ Churn Risk    │
+└───────────────┘       │  Transactions │       └───────────────┘
+                        └───────────────┘
+                                │
+                        ┌───────────────┐
+                        │ Feature Store │
+                        │  (Online)     │
+                        └───────────────┘
+```
 
 ### Feature Store Capabilities
 - **Feature Engineering**: SQL-based feature definitions with versioning
@@ -51,271 +64,201 @@ This Snowflake Intelligence solution showcases:
 - **Training Datasets**: Point-in-time correct feature retrieval
 - **Online Serving**: Low-latency feature serving for real-time inference
 - **Feature Monitoring**: Data quality and drift detection
-- **Lineage Tracking**: Full feature computation lineage
 
-### Banking Intelligence Use Cases
+### Credit Union Intelligence Use Cases
+- **Loan Risk Assessment**: Default probability scoring
 - **Fraud Detection**: Real-time transaction risk scoring
-- **Credit Risk**: Dynamic credit limit adjustments
-- **Customer 360**: Unified view of customer behavior and value
-- **Personalization**: Product recommendations and offers
-- **Churn Prevention**: Early warning signals and interventions
-- **Cash Flow Prediction**: Advance eligibility and amount optimization
-- **AML Compliance**: Suspicious activity pattern detection
+- **Member 360**: Unified view of member behavior and value
+- **Churn Prevention**: Early warning signals and retention actions
+- **Compliance Support**: BSA/AML guidance and policy lookup
+
+## Directory Structure
+
+```
+├── README.md                           # This file
+├── docs/
+│   ├── AGENT_SETUP.md                  # Agent configuration guide
+│   ├── DEMO_PRESENTATION_GUIDE.md      # Demo walkthrough
+│   ├── FEATURE_STORE_GUIDE.md          # Feature Store documentation
+│   └── questions.md                    # Sample agent questions
+├── notebooks/
+│   └── macu_ml_models.ipynb            # ML training notebook
+└── sql/
+    ├── setup/
+    │   ├── 01_database_and_schema.sql  # Database initialization
+    │   └── 02_create_tables.sql        # Core table definitions
+    ├── data/
+    │   └── 04_generate_synthetic_data.sql  # Synthetic data generation
+    ├── feature_store/
+    │   ├── 03_create_feature_store.sql     # Feature Store infrastructure
+    │   ├── 05_create_features.sql          # Feature definitions
+    │   ├── 05a_populate_monitoring_data.sql # Monitoring data
+    │   └── 05b_create_aggregation_views.sql # Aggregation views
+    ├── views/
+    │   ├── 06_create_views.sql             # Analytical views
+    │   └── 07_create_semantic_views.sql    # Semantic views for Analyst
+    ├── search/
+    │   └── 08_create_cortex_search.sql     # Cortex Search services
+    ├── ml/
+    │   └── 09_create_model_functions.sql   # ML inference functions
+    ├── agent/
+    │   └── 10_create_intelligence_agent.sql # Agent creation
+    ├── monitoring/
+    │   └── 11_create_monitoring_dashboard.sql # Dashboard views
+    └── validation/
+        └── 12_validate_deployment.sql      # Deployment validation
+```
 
 ## Database Schema
 
 ### 1. **RAW Schema**: Core Banking Tables
-- CUSTOMERS: Account holders and prospects
-- ACCOUNTS: Checking, savings, and credit accounts
-- TRANSACTIONS: All financial transactions
+- MEMBERS: Credit union members and demographics
+- ACCOUNTS: Share savings, checking, certificates, credit cards
+- LOANS: Auto, mortgage, home equity, personal loans
 - CARDS: Debit and credit card details
-- DIRECT_DEPOSITS: Employer and government deposits
-- CASH_ADVANCES: Varo Advance usage
-- CREDIT_APPLICATIONS: Believe card and LOC applications
-- MERCHANT_CATEGORIES: MCC codes and cashback eligibility
-- DEVICE_SESSIONS: Mobile app usage and security
-- SUPPORT_INTERACTIONS: Customer service contacts
-- MARKETING_CAMPAIGNS: Targeted offers and communications
-- EXTERNAL_DATA: Credit bureau and bank verification data
-- COMPLIANCE_EVENTS: AML/KYC/regulatory events
+- TRANSACTIONS: All financial transactions
+- DIRECT_DEPOSITS: Payroll and recurring deposits
+- SUPPORT_INTERACTIONS: Member service contacts
+- SUPPORT_TRANSCRIPTS: Interaction transcripts for search
+- COMPLIANCE_DOCUMENTS: Policies and regulations
+- PRODUCT_KNOWLEDGE: Product documentation
+- BRANCHES: Branch locations
 
 ### 2. **FEATURE_STORE Schema**: ML Feature Management
-- FEATURE_DEFINITIONS: Feature computation logic and metadata
-- FEATURE_SETS: Grouped features for specific use cases
-- FEATURE_VALUES: Materialized feature values with history
-- FEATURE_STATISTICS: Data quality and distribution metrics
-- TRAINING_DATASETS: Point-in-time feature snapshots
-- FEATURE_LINEAGE: Dependencies and computation graph
-- FEATURE_MONITORING: Drift detection and alerts
-- MODEL_FEATURES: Feature-model associations
-- ONLINE_FEATURES: Low-latency serving tables
+- ENTITY_MEMBER/ACCOUNT/LOAN/TRANSACTION: Entity tables
+- FEATURE_REGISTRY: Feature metadata and definitions
+- FEATURE_GROUPS: Logical feature groupings
+- FEATURE_COMPUTATION_LOG: Computation history
+- FEATURE_STORE_HEALTH: Health monitoring
 
 ### 3. **ANALYTICS Schema**: Intelligence Views
-- Customer behavioral analytics
-- Risk and fraud indicators
-- Product usage patterns
-- Financial health metrics
-- Compliance monitoring
-- Semantic views for AI agents
-
-### 4. **Cortex Search Services**: Document Intelligence
-- SUPPORT_TRANSCRIPTS_SEARCH: Customer service interactions
-- COMPLIANCE_DOCS_SEARCH: Regulatory documentation
-- PRODUCT_KNOWLEDGE_SEARCH: Internal knowledge base
-
-## Feature Store Architecture
-
-### Feature Engineering Pipeline
-```
-Raw Data → SQL Transformations → Feature Tables → Online/Training Serving
-    ↓                ↓                   ↓               ↓
-Streams      Dynamic Tables      Time Travel      External Functions
-```
-
-### Key Components
-
-1. **Feature Engineering**
-   - SQL-based feature definitions
-   - Streaming and batch computation
-   - Window aggregations (7d, 30d, 90d)
-   - Complex features (ratios, velocities, patterns)
-
-2. **Feature Storage**
-   - Historical features with time-travel
-   - Online features for real-time serving
-   - Feature versioning and lineage
-
-3. **Feature Serving**
-   - Batch retrieval for model training
-   - Real-time API for inference
-   - Point-in-time correctness guaranteed
-
-4. **Feature Monitoring**
-   - Data quality checks
-   - Distribution drift detection
-   - Feature importance tracking
+- V_MEMBER_360: Comprehensive member profile
+- V_ACCOUNT_SUMMARY: Account details and activity
+- V_LOAN_PORTFOLIO: Loan analysis view
+- V_TRANSACTION_ANALYTICS: Transaction patterns
+- V_SUPPORT_ANALYTICS: Support metrics
+- SV_* Semantic views for Cortex Analyst
 
 ## Setup Instructions
 
 ### Prerequisites
 - Snowflake account with Cortex Intelligence enabled
-- Dynamic Tables enabled
-- External Functions enabled (for real-time serving)
 - ACCOUNTADMIN or equivalent privileges
+- Warehouse for query execution
 
 ### Quick Start
 ```sql
 -- 1. Create database and schemas
-@sql/setup/01_database_and_schema.sql
+-- Run: sql/setup/01_database_and_schema.sql
 
 -- 2. Create core tables
-@sql/setup/02_create_tables.sql
+-- Run: sql/setup/02_create_tables.sql
 
 -- 3. Create Feature Store tables
-@sql/feature_store/03_create_feature_store.sql
+-- Run: sql/feature_store/03_create_feature_store.sql
 
--- 4. Generate synthetic banking data (15-20 min)
-@sql/data/04_generate_synthetic_data.sql
+-- 4. Generate synthetic data (~5 min)
+-- Run: sql/data/04_generate_synthetic_data.sql
 
--- 5. Create feature definitions
-@sql/feature_store/05_create_features.sql
+-- 5. Create aggregation views
+-- Run: sql/feature_store/05b_create_aggregation_views.sql
 
 -- 6. Create analytical views
-@sql/views/06_create_views.sql
+-- Run: sql/views/06_create_views.sql
 
 -- 7. Create semantic views for AI
-@sql/views/07_create_semantic_views.sql
+-- Run: sql/views/07_create_semantic_views.sql
 
 -- 8. Create Cortex Search services
-@sql/search/08_create_cortex_search.sql
+-- Run: sql/search/08_create_cortex_search.sql
 
 -- 9. Create ML wrapper functions
-@sql/ml/09_create_model_functions.sql
+-- Run: sql/ml/09_create_model_functions.sql
 
 -- 10. Configure Intelligence Agent
-@sql/agent/10_create_intelligence_agent.sql
-```
+-- Run: sql/agent/10_create_intelligence_agent.sql
 
-## Feature Store Examples
+-- 11. Create monitoring dashboards
+-- Run: sql/monitoring/11_create_monitoring_dashboard.sql
 
-### Customer Transaction Features (SQL-First Approach)
-```sql
--- Example: 30-day transaction velocity features
-CREATE OR REPLACE DYNAMIC TABLE features.customer_transaction_velocity AS
-SELECT
-    customer_id,
-    CURRENT_TIMESTAMP() as feature_timestamp,
-    COUNT(*) FILTER (WHERE transaction_date >= DATEADD('day', -30, CURRENT_DATE())) as txn_count_30d,
-    AVG(amount) FILTER (WHERE transaction_date >= DATEADD('day', -30, CURRENT_DATE())) as txn_avg_amount_30d,
-    COUNT(DISTINCT merchant_category) FILTER (WHERE transaction_date >= DATEADD('day', -30, CURRENT_DATE())) as unique_merchants_30d
-FROM raw.transactions
-GROUP BY customer_id;
-```
-
-### Real-Time Feature Serving
-```sql
--- External function for low-latency feature retrieval
-CREATE OR REPLACE EXTERNAL FUNCTION get_customer_features(customer_id NUMBER)
-RETURNS VARIANT
-API_INTEGRATION = varo_feature_api
-AS 'https://api.varo-features.snowflake.app/v1/features';
+-- 12. Validate deployment
+-- Run: sql/validation/12_validate_deployment.sql
 ```
 
 ## Data Volumes
 
-- **Customers**: 2M active users
-- **Accounts**: 3.5M (checking, savings, credit)
-- **Transactions**: 500M historical + 2M daily
-- **Features**: 200+ engineered features
-- **Models**: 15 ML models in production
-- **Predictions**: 10M+ daily risk scores
+- **Members**: ~10,000 active members
+- **Accounts**: ~25,000 (savings, checking, certificates, credit)
+- **Loans**: ~7,500 (auto, mortgage, home equity, personal)
+- **Transactions**: ~500,000 historical
+- **Features**: 15+ engineered features
+- **Branches**: 30+ locations across 5 states
 
-## Complex Questions the Agent Can Answer
+## Using the Agent
 
-### Feature Store Management
-1. "What features have the highest drift in the last 7 days?"
-2. "Show me feature lineage for the fraud_risk_score model"
-3. "Which features are most important for cash advance eligibility?"
-4. "Generate a training dataset for churn prediction with 6-month history"
+### Example Queries
 
-### Banking Intelligence
-5. "What are the early warning signals of account closure?"
-6. "Which customers are eligible for credit limit increases?"
-7. "Analyze cashback redemption patterns by merchant category"
-8. "What's the correlation between direct deposit amounts and advance usage?"
+```sql
+-- Product information
+SELECT SNOWFLAKE.CORTEX.AGENT(
+    'MACU_INTELLIGENCE.ANALYTICS.MACU_INTELLIGENCE_AGENT',
+    'What are the current auto loan rates?'
+);
 
-### Risk & Compliance
-9. "Show suspicious transaction patterns in the last 24 hours"
-10. "Which accounts show signs of money laundering risk?"
-11. "What's our fraud detection model's performance this month?"
-12. "List customers requiring enhanced KYC review"
+-- Member analytics
+SELECT SNOWFLAKE.CORTEX.AGENT(
+    'MACU_INTELLIGENCE.ANALYTICS.MACU_INTELLIGENCE_AGENT',
+    'How many PLATINUM tier members do we have in Utah?'
+);
 
-### Business Intelligence
-13. "What's driving the increase in cash advance defaults?"
-14. "Which marketing campaigns have the highest ROI?"
-15. "Analyze the impact of early direct deposit on customer retention"
-16. "What features predict successful credit building outcomes?"
+-- Loan risk assessment
+SELECT SNOWFLAKE.CORTEX.AGENT(
+    'MACU_INTELLIGENCE.ANALYTICS.MACU_INTELLIGENCE_AGENT',
+    'What is the default risk for a member with 680 credit score requesting $35,000 auto loan?'
+);
 
-## Tecton → Snowflake Migration Guide
-
-### Feature Definition Migration
-```python
-# Tecton Feature (Python)
-@batch_feature_view(
-    sources=[transactions],
-    mode='spark_sql',
-    ttl=timedelta(days=90)
-)
-def customer_spend_features(transactions):
-    return f"""
-    SELECT 
-        customer_id,
-        SUM(amount) as total_spend_90d
-    FROM {transactions}
-    WHERE timestamp > current_timestamp - INTERVAL 90 DAYS
-    GROUP BY customer_id
-    """
-
-# Snowflake Equivalent (Pure SQL)
-CREATE OR REPLACE DYNAMIC TABLE features.customer_spend AS
-SELECT 
-    customer_id,
-    SUM(amount) as total_spend_90d
-FROM raw.transactions
-WHERE timestamp > CURRENT_TIMESTAMP() - INTERVAL '90 DAYS'
-GROUP BY customer_id
-REFRESH = INTERVAL 1 HOUR;
+-- Compliance guidance
+SELECT SNOWFLAKE.CORTEX.AGENT(
+    'MACU_INTELLIGENCE.ANALYTICS.MACU_INTELLIGENCE_AGENT',
+    'What are our SAR filing requirements?'
+);
 ```
 
-### Online Serving Migration
-- Tecton: Feature Server with DynamoDB/Redis
-- Snowflake: External Functions + Snowflake REST API
+## Service Areas
 
-### Training Data Migration
-- Tecton: `get_historical_features()` with point-in-time join
-- Snowflake: Time Travel queries with `AS OF` syntax
+Mountain America Credit Union serves:
+- **Utah** - Primary market (Salt Lake City, Provo, Ogden, St. George)
+- **Idaho** - Boise, Meridian, Idaho Falls
+- **Arizona** - Mesa, Gilbert, Chandler
+- **Nevada** - Las Vegas, Henderson
+- **New Mexico** - Albuquerque
 
-## Security & Compliance
+## Documentation
 
-- **Data Encryption**: End-to-end encryption at rest and in transit
-- **Access Control**: Row-level security and column masking
-- **Audit Logging**: Complete audit trail of all data access
-- **PCI Compliance**: Certified for payment card data
-- **SOC 2**: Type II certified
-- **Privacy**: CCPA/GDPR compliant with data residency controls
-
-## Support
-
-For questions or assistance:
-- Review `docs/AGENT_SETUP.md` for agent configuration
-- Check `docs/questions.md` for example queries
-- See `docs/FEATURE_STORE_GUIDE.md` for feature engineering patterns
-- Consult `docs/MIGRATION_GUIDE.md` for Tecton migration details
+- [Agent Setup Guide](docs/AGENT_SETUP.md) - Detailed agent configuration
+- [Feature Store Guide](docs/FEATURE_STORE_GUIDE.md) - Feature management documentation
+- [Demo Presentation Guide](docs/DEMO_PRESENTATION_GUIDE.md) - Demo walkthrough
+- [Sample Questions](docs/questions.md) - Example queries for the agent
 
 ## Version History
 
-- **v1.0** (November 2025): Initial release
+- **v1.0** (February 2026): Initial release
   - Complete Feature Store implementation
-  - Banking-specific semantic views
-  - 500M+ transactions, 2M customers
-  - 200+ ML features
+  - Credit union-specific semantic views
+  - 500K+ transactions, 10K members
+  - 15+ ML features
   - Cortex Search for support and compliance
-  - Tecton migration patterns
-  - 20 complex test questions
+  - Intelligence Agent with multi-tool support
 
 ---
 
-**Created**: November 2025  
-**Based On**: Microchip Intelligence Template  
-**Focus**: SQL-First Feature Store for Banking ML  
-**Target**: Migration from Tecton to Snowflake
+**Created**: February 2026  
+**Focus**: SQL-First Feature Store for Credit Union ML  
+**Platform**: Snowflake Cortex
 
 **ALL SQL SYNTAX VERIFIED** ✅  
 **FEATURE STORE PATTERNS TESTED** ✅
 
-## Important Note on Indexes
+---
 
-Snowflake does not support traditional CREATE INDEX syntax on regular tables. Instead, this demo uses:
-- **CLUSTER BY** for optimizing query performance on frequently filtered columns
-- **SEARCH OPTIMIZATION** for point lookups in the Feature Store
-- See `docs/SNOWFLAKE_OPTIMIZATION_NOTES.md` for details
+*Built with Snowflake Cortex, Feature Store, and Intelligence Agent*
