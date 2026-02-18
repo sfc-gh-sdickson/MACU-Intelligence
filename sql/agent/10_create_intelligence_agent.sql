@@ -16,7 +16,7 @@ USE WAREHOUSE MACU_WH;
 -- ============================================================================
 CREATE OR REPLACE CORTEX AGENT MACU_INTELLIGENCE_AGENT
   COMMENT = 'Mountain America Credit Union AI Assistant for member service, loan analysis, and compliance queries'
-  MODEL = 'claude-3-5-sonnet'
+  MODEL = 'auto'
   TOOLS = (
     -- Cortex Search tools for unstructured data retrieval
     {
