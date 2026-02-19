@@ -131,26 +131,28 @@ SELECT 'CORTEX_SEARCH_PRODUCTS' AS check_type,
 -- ============================================================================
 -- Section 5: Validate ML Functions
 -- ============================================================================
+-- NOTE: ML functions are created via the macu_ml_models.ipynb notebook.
+--       Uncomment the tests below after running the notebook.
 
 -- Test loan default risk prediction
-SELECT 'ML_FUNCTION_LOAN_RISK' AS check_type,
-    PREDICT_LOAN_DEFAULT_RISK(720, 25000, 0.35, 365, 50000, 0) AS result,
-    'PASS' AS status;
+-- SELECT 'ML_FUNCTION_LOAN_RISK' AS check_type,
+--     PREDICT_LOAN_DEFAULT_RISK(720, 25000, 0.35, 365, 50000, 0) AS result,
+--     'PASS' AS status;
 
 -- Test fraud score prediction
-SELECT 'ML_FUNCTION_FRAUD' AS check_type,
-    PREDICT_FRAUD_SCORE(500, 100, 3, FALSE, FALSE, 14) AS result,
-    'PASS' AS status;
+-- SELECT 'ML_FUNCTION_FRAUD' AS check_type,
+--     PREDICT_FRAUD_SCORE(500, 100, 3, FALSE, FALSE, 14) AS result,
+--     'PASS' AS status;
 
 -- Test churn prediction
-SELECT 'ML_FUNCTION_CHURN' AS check_type,
-    PREDICT_MEMBER_CHURN(365, 20, TRUE, 3, 1, 5) AS result,
-    'PASS' AS status;
+-- SELECT 'ML_FUNCTION_CHURN' AS check_type,
+--     PREDICT_MEMBER_CHURN(365, 20, TRUE, 3, 1, 5) AS result,
+--     'PASS' AS status;
 
 -- Test loan approval recommendation
-SELECT 'ML_FUNCTION_LOAN_APPROVAL' AS check_type,
-    RECOMMEND_LOAN_APPROVAL('AUTO', 35000, 720, 6000, 1500, 'EMPLOYED', 3) AS result,
-    'PASS' AS status;
+-- SELECT 'ML_FUNCTION_LOAN_APPROVAL' AS check_type,
+--     RECOMMEND_LOAN_APPROVAL('AUTO', 35000, 720, 6000, 1500, 'EMPLOYED', 3) AS result,
+--     'PASS' AS status;
 
 -- ============================================================================
 -- Section 6: Validate Semantic Views

@@ -120,44 +120,33 @@ CREATE OR REPLACE TABLE FEATURE_STORE_HEALTH (
 -- ============================================================================
 
 INSERT INTO FEATURE_GROUPS (group_id, group_name, description, entity_type, owner, tags)
-VALUES
-    ('MEMBER_PROFILE', 'Member Profile Features', 'Demographic and account ownership features', 'MEMBER', 'Data Science Team', ARRAY_CONSTRUCT('profile', 'demographic')),
-    ('TRANSACTION_PATTERNS', 'Transaction Pattern Features', 'Features derived from transaction behavior', 'MEMBER', 'Data Science Team', ARRAY_CONSTRUCT('transactions', 'behavior')),
-    ('LOAN_RISK', 'Loan Risk Features', 'Features for loan risk assessment', 'MEMBER', 'Risk Team', ARRAY_CONSTRUCT('risk', 'loans', 'credit')),
-    ('FRAUD_DETECTION', 'Fraud Detection Features', 'Features for fraud and anomaly detection', 'TRANSACTION', 'Fraud Team', ARRAY_CONSTRUCT('fraud', 'security')),
-    ('MEMBER_ENGAGEMENT', 'Member Engagement Features', 'Features measuring member engagement and activity', 'MEMBER', 'Marketing Team', ARRAY_CONSTRUCT('engagement', 'activity')),
-    ('CREDIT_UTILIZATION', 'Credit Utilization Features', 'Features related to credit product usage', 'MEMBER', 'Risk Team', ARRAY_CONSTRUCT('credit', 'utilization'));
+SELECT 'MEMBER_PROFILE', 'Member Profile Features', 'Demographic and account ownership features', 'MEMBER', 'Data Science Team', ARRAY_CONSTRUCT('profile', 'demographic')
+UNION ALL SELECT 'TRANSACTION_PATTERNS', 'Transaction Pattern Features', 'Features derived from transaction behavior', 'MEMBER', 'Data Science Team', ARRAY_CONSTRUCT('transactions', 'behavior')
+UNION ALL SELECT 'LOAN_RISK', 'Loan Risk Features', 'Features for loan risk assessment', 'MEMBER', 'Risk Team', ARRAY_CONSTRUCT('risk', 'loans', 'credit')
+UNION ALL SELECT 'FRAUD_DETECTION', 'Fraud Detection Features', 'Features for fraud and anomaly detection', 'TRANSACTION', 'Fraud Team', ARRAY_CONSTRUCT('fraud', 'security')
+UNION ALL SELECT 'MEMBER_ENGAGEMENT', 'Member Engagement Features', 'Features measuring member engagement and activity', 'MEMBER', 'Marketing Team', ARRAY_CONSTRUCT('engagement', 'activity')
+UNION ALL SELECT 'CREDIT_UTILIZATION', 'Credit Utilization Features', 'Features related to credit product usage', 'MEMBER', 'Risk Team', ARRAY_CONSTRUCT('credit', 'utilization');
 
 -- ============================================================================
 -- Section 6: Insert Feature Registry Entries
 -- ============================================================================
 
 INSERT INTO FEATURE_REGISTRY (feature_id, feature_name, feature_group, entity_type, description, data_type, computation_type, window_size, aggregation_function, source_tables, is_real_time, refresh_frequency, tags)
-VALUES
-    -- Member Profile Features
-    ('mem_tenure_days', 'Member Tenure Days', 'MEMBER_PROFILE', 'MEMBER', 'Days since member joined', 'INTEGER', 'DERIVED', NULL, NULL, ARRAY_CONSTRUCT('MEMBERS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('profile')),
-    ('mem_num_accounts', 'Number of Accounts', 'MEMBER_PROFILE', 'MEMBER', 'Total number of accounts held', 'INTEGER', 'AGGREGATE', NULL, 'COUNT', ARRAY_CONSTRUCT('ACCOUNTS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('profile')),
-    ('mem_total_balance', 'Total Balance', 'MEMBER_PROFILE', 'MEMBER', 'Sum of all account balances', 'DECIMAL', 'AGGREGATE', NULL, 'SUM', ARRAY_CONSTRUCT('ACCOUNTS'), FALSE, 'HOURLY', ARRAY_CONSTRUCT('balance')),
-    
-    -- Transaction Pattern Features
-    ('txn_count_7d', 'Transaction Count 7 Days', 'TRANSACTION_PATTERNS', 'MEMBER', 'Number of transactions in last 7 days', 'INTEGER', 'AGGREGATE', '7_DAYS', 'COUNT', ARRAY_CONSTRUCT('TRANSACTIONS'), FALSE, 'HOURLY', ARRAY_CONSTRUCT('transactions')),
-    ('txn_volume_7d', 'Transaction Volume 7 Days', 'TRANSACTION_PATTERNS', 'MEMBER', 'Total transaction amount in last 7 days', 'DECIMAL', 'AGGREGATE', '7_DAYS', 'SUM', ARRAY_CONSTRUCT('TRANSACTIONS'), FALSE, 'HOURLY', ARRAY_CONSTRUCT('transactions')),
-    ('txn_avg_amount', 'Average Transaction Amount', 'TRANSACTION_PATTERNS', 'MEMBER', 'Average transaction amount', 'DECIMAL', 'AGGREGATE', '30_DAYS', 'AVG', ARRAY_CONSTRUCT('TRANSACTIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('transactions')),
-    
-    -- Loan Risk Features
-    ('loan_total_balance', 'Total Loan Balance', 'LOAN_RISK', 'MEMBER', 'Sum of all outstanding loan balances', 'DECIMAL', 'AGGREGATE', NULL, 'SUM', ARRAY_CONSTRUCT('LOANS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('loans', 'risk')),
-    ('loan_num_active', 'Number of Active Loans', 'LOAN_RISK', 'MEMBER', 'Count of active loans', 'INTEGER', 'AGGREGATE', NULL, 'COUNT', ARRAY_CONSTRUCT('LOANS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('loans')),
-    ('loan_dti_ratio', 'Debt to Income Ratio', 'LOAN_RISK', 'MEMBER', 'Monthly debt payments vs income', 'DECIMAL', 'DERIVED', NULL, NULL, ARRAY_CONSTRUCT('LOANS', 'MEMBERS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('risk', 'credit')),
-    
-    -- Fraud Detection Features
-    ('fraud_txn_velocity_1h', 'Transaction Velocity 1 Hour', 'FRAUD_DETECTION', 'MEMBER', 'Number of transactions in last hour', 'INTEGER', 'AGGREGATE', '1_HOUR', 'COUNT', ARRAY_CONSTRUCT('TRANSACTIONS'), TRUE, 'REAL_TIME', ARRAY_CONSTRUCT('fraud', 'velocity')),
-    ('fraud_amount_deviation', 'Amount Deviation Score', 'FRAUD_DETECTION', 'TRANSACTION', 'Standard deviations from typical amount', 'DECIMAL', 'DERIVED', '30_DAYS', NULL, ARRAY_CONSTRUCT('TRANSACTIONS'), TRUE, 'REAL_TIME', ARRAY_CONSTRUCT('fraud', 'anomaly')),
-    ('fraud_new_merchant_flag', 'New Merchant Flag', 'FRAUD_DETECTION', 'TRANSACTION', 'Transaction at never-before-seen merchant', 'BOOLEAN', 'DERIVED', NULL, NULL, ARRAY_CONSTRUCT('TRANSACTIONS'), TRUE, 'REAL_TIME', ARRAY_CONSTRUCT('fraud')),
-    
-    -- Member Engagement Features
-    ('engage_login_count_30d', 'Login Count 30 Days', 'MEMBER_ENGAGEMENT', 'MEMBER', 'Number of digital banking logins', 'INTEGER', 'AGGREGATE', '30_DAYS', 'COUNT', ARRAY_CONSTRUCT('DEVICE_SESSIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('engagement')),
-    ('engage_mobile_pct', 'Mobile Usage Percentage', 'MEMBER_ENGAGEMENT', 'MEMBER', 'Percentage of logins via mobile app', 'DECIMAL', 'DERIVED', '30_DAYS', NULL, ARRAY_CONSTRUCT('DEVICE_SESSIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('engagement', 'mobile')),
-    ('engage_support_contacts', 'Support Contact Count', 'MEMBER_ENGAGEMENT', 'MEMBER', 'Number of support interactions', 'INTEGER', 'AGGREGATE', '90_DAYS', 'COUNT', ARRAY_CONSTRUCT('SUPPORT_INTERACTIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('engagement', 'support'));
+SELECT 'mem_tenure_days', 'Member Tenure Days', 'MEMBER_PROFILE', 'MEMBER', 'Days since member joined', 'INTEGER', 'DERIVED', NULL, NULL, ARRAY_CONSTRUCT('MEMBERS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('profile')
+UNION ALL SELECT 'mem_num_accounts', 'Number of Accounts', 'MEMBER_PROFILE', 'MEMBER', 'Total number of accounts held', 'INTEGER', 'AGGREGATE', NULL, 'COUNT', ARRAY_CONSTRUCT('ACCOUNTS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('profile')
+UNION ALL SELECT 'mem_total_balance', 'Total Balance', 'MEMBER_PROFILE', 'MEMBER', 'Sum of all account balances', 'DECIMAL', 'AGGREGATE', NULL, 'SUM', ARRAY_CONSTRUCT('ACCOUNTS'), FALSE, 'HOURLY', ARRAY_CONSTRUCT('balance')
+UNION ALL SELECT 'txn_count_7d', 'Transaction Count 7 Days', 'TRANSACTION_PATTERNS', 'MEMBER', 'Number of transactions in last 7 days', 'INTEGER', 'AGGREGATE', '7_DAYS', 'COUNT', ARRAY_CONSTRUCT('TRANSACTIONS'), FALSE, 'HOURLY', ARRAY_CONSTRUCT('transactions')
+UNION ALL SELECT 'txn_volume_7d', 'Transaction Volume 7 Days', 'TRANSACTION_PATTERNS', 'MEMBER', 'Total transaction amount in last 7 days', 'DECIMAL', 'AGGREGATE', '7_DAYS', 'SUM', ARRAY_CONSTRUCT('TRANSACTIONS'), FALSE, 'HOURLY', ARRAY_CONSTRUCT('transactions')
+UNION ALL SELECT 'txn_avg_amount', 'Average Transaction Amount', 'TRANSACTION_PATTERNS', 'MEMBER', 'Average transaction amount', 'DECIMAL', 'AGGREGATE', '30_DAYS', 'AVG', ARRAY_CONSTRUCT('TRANSACTIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('transactions')
+UNION ALL SELECT 'loan_total_balance', 'Total Loan Balance', 'LOAN_RISK', 'MEMBER', 'Sum of all outstanding loan balances', 'DECIMAL', 'AGGREGATE', NULL, 'SUM', ARRAY_CONSTRUCT('LOANS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('loans', 'risk')
+UNION ALL SELECT 'loan_num_active', 'Number of Active Loans', 'LOAN_RISK', 'MEMBER', 'Count of active loans', 'INTEGER', 'AGGREGATE', NULL, 'COUNT', ARRAY_CONSTRUCT('LOANS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('loans')
+UNION ALL SELECT 'loan_dti_ratio', 'Debt to Income Ratio', 'LOAN_RISK', 'MEMBER', 'Monthly debt payments vs income', 'DECIMAL', 'DERIVED', NULL, NULL, ARRAY_CONSTRUCT('LOANS', 'MEMBERS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('risk', 'credit')
+UNION ALL SELECT 'fraud_txn_velocity_1h', 'Transaction Velocity 1 Hour', 'FRAUD_DETECTION', 'MEMBER', 'Number of transactions in last hour', 'INTEGER', 'AGGREGATE', '1_HOUR', 'COUNT', ARRAY_CONSTRUCT('TRANSACTIONS'), TRUE, 'REAL_TIME', ARRAY_CONSTRUCT('fraud', 'velocity')
+UNION ALL SELECT 'fraud_amount_deviation', 'Amount Deviation Score', 'FRAUD_DETECTION', 'TRANSACTION', 'Standard deviations from typical amount', 'DECIMAL', 'DERIVED', '30_DAYS', NULL, ARRAY_CONSTRUCT('TRANSACTIONS'), TRUE, 'REAL_TIME', ARRAY_CONSTRUCT('fraud', 'anomaly')
+UNION ALL SELECT 'fraud_new_merchant_flag', 'New Merchant Flag', 'FRAUD_DETECTION', 'TRANSACTION', 'Transaction at never-before-seen merchant', 'BOOLEAN', 'DERIVED', NULL, NULL, ARRAY_CONSTRUCT('TRANSACTIONS'), TRUE, 'REAL_TIME', ARRAY_CONSTRUCT('fraud')
+UNION ALL SELECT 'engage_login_count_30d', 'Login Count 30 Days', 'MEMBER_ENGAGEMENT', 'MEMBER', 'Number of digital banking logins', 'INTEGER', 'AGGREGATE', '30_DAYS', 'COUNT', ARRAY_CONSTRUCT('DEVICE_SESSIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('engagement')
+UNION ALL SELECT 'engage_mobile_pct', 'Mobile Usage Percentage', 'MEMBER_ENGAGEMENT', 'MEMBER', 'Percentage of logins via mobile app', 'DECIMAL', 'DERIVED', '30_DAYS', NULL, ARRAY_CONSTRUCT('DEVICE_SESSIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('engagement', 'mobile')
+UNION ALL SELECT 'engage_support_contacts', 'Support Contact Count', 'MEMBER_ENGAGEMENT', 'MEMBER', 'Number of support interactions', 'INTEGER', 'AGGREGATE', '90_DAYS', 'COUNT', ARRAY_CONSTRUCT('SUPPORT_INTERACTIONS'), FALSE, 'DAILY', ARRAY_CONSTRUCT('engagement', 'support');
 
 -- Display confirmation
 SELECT 'Feature Store infrastructure created successfully' AS STATUS;
