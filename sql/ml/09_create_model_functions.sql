@@ -286,5 +286,43 @@ LEFT JOIN (
 ) support ON m.member_id = support.member_id
 WHERE m.member_status = 'ACTIVE';
 
+-- ============================================================================
+-- Section 3: Flattened Views for Semantic View Compatibility
+-- ============================================================================
+
+-- Flattened loan risk view (for semantic views - no JSON)
+CREATE OR REPLACE VIEW V_LOAN_RISK_FLAT AS
+SELECT
+    loan_id,
+    member_id,
+    loan_type,
+    current_balance,
+    credit_score,
+    loan_amount,
+    dti_ratio,
+    tenure_days,
+    total_loan_balance,
+    times_30_days_late,
+    risk_prediction:risk_score::FLOAT AS risk_score,
+    risk_prediction:risk_category::STRING AS risk_category,
+    risk_prediction:recommended_action::STRING AS recommended_action
+FROM V_LOAN_RISK_SCORES;
+
+-- Flattened churn prediction view (for semantic views - no JSON)
+CREATE OR REPLACE VIEW V_MEMBER_CHURN_FLAT AS
+SELECT
+    member_id,
+    member_name,
+    membership_tier,
+    tenure_days,
+    transactions_30d,
+    digital_banking_enrolled,
+    products_held,
+    support_interactions_90d,
+    days_since_last_activity,
+    churn_prediction:churn_probability::FLOAT AS churn_probability,
+    churn_prediction:churn_risk::STRING AS churn_risk
+FROM V_MEMBER_CHURN_SCORES;
+
 -- Display confirmation
 SELECT 'ML model functions and views created successfully' AS STATUS;

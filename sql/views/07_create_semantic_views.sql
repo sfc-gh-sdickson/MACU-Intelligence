@@ -223,5 +223,62 @@ CREATE OR REPLACE SEMANTIC VIEW SV_SUPPORT_ANALYTICS
   )
   COMMENT = 'Semantic view for analyzing MACU member support interactions and satisfaction';
 
+-- ============================================================================
+-- Semantic View 6: Loan Risk Predictions (ML-Scored)
+-- ============================================================================
+CREATE OR REPLACE SEMANTIC VIEW SV_LOAN_RISK_PREDICTIONS
+  TABLES (
+    loans AS V_LOAN_RISK_FLAT
+      PRIMARY KEY (loan_id)
+      COMMENT = 'Loan portfolio with ML-generated risk predictions'
+  )
+  DIMENSIONS (
+    loans.loan_id AS loan_id WITH SYNONYMS = ('loan number') COMMENT = 'Unique loan identifier',
+    loans.member_id AS member_id COMMENT = 'Member who holds this loan',
+    loans.loan_type AS loan_type WITH SYNONYMS = ('loan category') COMMENT = 'Loan type: AUTO, MORTGAGE, HOME_EQUITY, PERSONAL',
+    loans.risk_category AS risk_category WITH SYNONYMS = ('risk level', 'risk tier') COMMENT = 'ML-predicted risk category: LOW_RISK, MEDIUM_RISK, or HIGH_RISK',
+    loans.recommended_action AS recommended_action WITH SYNONYMS = ('action') COMMENT = 'Recommended action based on risk assessment'
+  )
+  METRICS (
+    loans.loan_count AS COUNT(loan_id) COMMENT = 'Count of loans',
+    loans.total_balance AS SUM(current_balance) WITH SYNONYMS = ('total loan balance') COMMENT = 'Total outstanding balance',
+    loans.avg_balance AS AVG(current_balance) COMMENT = 'Average loan balance',
+    loans.avg_credit_score AS AVG(credit_score) COMMENT = 'Average borrower credit score',
+    loans.avg_dti AS AVG(dti_ratio) WITH SYNONYMS = ('average DTI') COMMENT = 'Average debt-to-income ratio',
+    loans.avg_risk_score AS AVG(risk_score) WITH SYNONYMS = ('average risk score') COMMENT = 'Average ML risk score (0-1)',
+    loans.high_risk_count AS COUNT_IF(risk_category = 'HIGH_RISK') COMMENT = 'Count of high risk loans',
+    loans.medium_risk_count AS COUNT_IF(risk_category = 'MEDIUM_RISK') COMMENT = 'Count of medium risk loans',
+    loans.low_risk_count AS COUNT_IF(risk_category = 'LOW_RISK') COMMENT = 'Count of low risk loans'
+  )
+  COMMENT = 'Semantic view for querying ML-generated loan default risk predictions by loan type, member, or risk category';
+
+-- ============================================================================
+-- Semantic View 7: Member Churn Predictions (ML-Scored)
+-- ============================================================================
+CREATE OR REPLACE SEMANTIC VIEW SV_CHURN_PREDICTIONS
+  TABLES (
+    members AS V_MEMBER_CHURN_FLAT
+      PRIMARY KEY (member_id)
+      COMMENT = 'Active members with ML-generated churn predictions'
+  )
+  DIMENSIONS (
+    members.member_id AS member_id COMMENT = 'Unique member identifier',
+    members.member_name AS member_name WITH SYNONYMS = ('name') COMMENT = 'Full name of the member',
+    members.membership_tier AS membership_tier WITH SYNONYMS = ('tier') COMMENT = 'Member tier: STANDARD, GOLD, or PLATINUM',
+    members.digital_banking_enrolled AS digital_banking_enrolled WITH SYNONYMS = ('digital enrolled', 'digital banking') COMMENT = 'Whether member uses digital banking',
+    members.churn_risk AS churn_risk WITH SYNONYMS = ('churn level', 'attrition risk') COMMENT = 'ML-predicted churn risk: LOW, MEDIUM, or HIGH'
+  )
+  METRICS (
+    members.member_count AS COUNT(member_id) COMMENT = 'Count of members',
+    members.avg_tenure_days AS AVG(tenure_days) WITH SYNONYMS = ('average tenure') COMMENT = 'Average member tenure in days',
+    members.avg_transactions_30d AS AVG(transactions_30d) COMMENT = 'Average transactions in last 30 days',
+    members.avg_products AS AVG(products_held) COMMENT = 'Average products held',
+    members.avg_churn_probability AS AVG(churn_probability) WITH SYNONYMS = ('average churn score') COMMENT = 'Average ML churn probability (0-1)',
+    members.high_churn_risk_count AS COUNT_IF(churn_risk = 'HIGH') WITH SYNONYMS = ('at risk members') COMMENT = 'Count of high churn risk members',
+    members.medium_churn_risk_count AS COUNT_IF(churn_risk = 'MEDIUM') COMMENT = 'Count of medium churn risk members',
+    members.low_churn_risk_count AS COUNT_IF(churn_risk = 'LOW') COMMENT = 'Count of low churn risk members'
+  )
+  COMMENT = 'Semantic view for querying ML-generated member churn predictions to identify at-risk members for retention campaigns';
+
 -- Display confirmation
-SELECT 'Semantic views created successfully' AS STATUS, 5 AS semantic_views_created;
+SELECT 'Semantic views created successfully' AS STATUS, 7 AS semantic_views_created;
